@@ -32,41 +32,41 @@ function playRound(playerSelection, computerSelection) {
   switch (playerSelection) {
     case "Rock":
       if (computerSelection == "Rock") {
-        result = "It's a TIE!";
+        result = "It's a TIE!\n";
       } else if (computerSelection == "Paper") {
-        result = "\nYou Lose!\nPaper beats Rock!";
+        result = "\nYou Lose!\nPaper beats Rock!\n";
       } else if (computerSelection == "Scissors") {
-        result = "\nYou Win!\nRock beats Scissors!";
+        result = "\nYou Win!\nRock beats Scissors!\n";
       }
       break;
     case "Paper":
       if (computerSelection == "Paper") {
-        result = "It's a TIE!";
+        result = "It's a TIE!\n";
       } else if (computerSelection == "Rock") {
-        result = "\nYou Win!\nPaper beats Rock!";
+        result = "\nYou Win!\nPaper beats Rock!\n";
       } else if (computerSelection == "Scissors") {
-        result = "\nYou Lose!\nScissors beats Paper!";
+        result = "\nYou Lose!\nScissors beats Paper!\n";
       }
       break;
     case "Scissors":
       if (computerSelection == "Scissors") {
-        result = "It's a TIE!";
+        result = "It's a TIE!\n";
       } else if (computerSelection == "Rock") {
-        result = "\nYou Lose!\nRock beats Scissors!";
+        result = "\nYou Lose!\nRock beats Scissors!\n";
       } else if (computerSelection == "Paper") {
-        result = "\nYou Win!\nScissors beats Paper!";
+        result = "\nYou Win!\nScissors beats Paper!\n";
       }
       break;
     default:
-      result = "Error!";
+      result = "Error!\n";
   }
 
-  return console.log(result);
+  return result;
 }
 
 function game() {
   for (let i = 0; i < 5; i++) {
-    playRound(getPlayerChoice(), getComputerChoice());
+    console.log(playRound(getPlayerChoice(), getComputerChoice()));
   }
 }
 
