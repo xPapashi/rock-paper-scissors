@@ -1,4 +1,5 @@
 const words = ["Rock", "Paper", "Scissors"];
+let playerScore = 0, computerScore = 0;
 console.log("Number meaning:\n0 - Rock\n1 - Paper\n2 - Scissors");
 
 function getComputerChoice() {
@@ -35,8 +36,10 @@ function playRound(playerSelection, computerSelection) {
         result = "It's a TIE!\n";
       } else if (computerSelection == "Paper") {
         result = "\nYou Lose!\nPaper beats Rock!\n";
+        computerScore += 1;
       } else if (computerSelection == "Scissors") {
         result = "\nYou Win!\nRock beats Scissors!\n";
+        playerScore += 1;
       }
       break;
     case "Paper":
@@ -44,8 +47,10 @@ function playRound(playerSelection, computerSelection) {
         result = "It's a TIE!\n";
       } else if (computerSelection == "Rock") {
         result = "\nYou Win!\nPaper beats Rock!\n";
+        playerScore += 1;
       } else if (computerSelection == "Scissors") {
         result = "\nYou Lose!\nScissors beats Paper!\n";
+        computerScore += 1;
       }
       break;
     case "Scissors":
@@ -53,8 +58,10 @@ function playRound(playerSelection, computerSelection) {
         result = "It's a TIE!\n";
       } else if (computerSelection == "Rock") {
         result = "\nYou Lose!\nRock beats Scissors!\n";
+        computerScore += 1;
       } else if (computerSelection == "Paper") {
         result = "\nYou Win!\nScissors beats Paper!\n";
+        playerScore += 1;
       }
       break;
     default:
@@ -67,6 +74,15 @@ function playRound(playerSelection, computerSelection) {
 function game() {
   for (let i = 0; i < 5; i++) {
     console.log(playRound(getPlayerChoice(), getComputerChoice()));
+    console.log(`Players score: ${playerScore}`);
+    console.log(`Computer score: ${computerScore}`);
+  }
+  if (playerScore > computerScore) {
+    console.log(`Player Wins!!!\nWith a high score of ${playerScore}!`);
+  } else if (computerScore > playerScore) {
+    console.log(`Computer Wins!!!\nWith a high score of ${computerScore}`);
+  } else {
+    console.log("It's a TIE! No one wins!!!");
   }
 }
 
