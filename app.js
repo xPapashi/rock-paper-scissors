@@ -7,14 +7,15 @@ function getComputerChoice() {
 }
 
 function getPlayerChoice() {
-  let playerInput = parseInt(prompt("Enter a number from 0-2:"));
+  let playerInput = prompt("Enter Rock, Paper or Scissors:");
+  let convertInput = playerInput.toLowerCase();
   const error = "Invalid choice!";
 
-  if (playerInput == 0) {
+  if (convertInput == "rock") {
     playerInput = words[0];
-  } else if (playerInput == 1) {
+  } else if (convertInput == "paper") {
     playerInput = words[1];
-  } else if (playerInput == 2) {
+  } else if (convertInput == "scissors") {
     playerInput = words[2];
   } else {
     playerInput = error;
@@ -57,10 +58,16 @@ function playRound(playerSelection, computerSelection) {
       }
       break;
     default:
-        result = "Error!";
+      result = "Error!";
   }
 
   return console.log(result);
 }
 
-playRound(getPlayerChoice(), getComputerChoice());
+function game() {
+  for (let i = 0; i < 5; i++) {
+    playRound(getPlayerChoice(), getComputerChoice());
+  }
+}
+
+game();
