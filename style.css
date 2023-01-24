@@ -3,3 +3,7 @@ html, body {
     color: #fff;
     text-align: center;
 }
+
+#reset {
+    display: none;
+}
