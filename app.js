@@ -71,24 +71,32 @@ function playRound(playerSelection, computerSelection) {
   return result;
 }
 
-function restartGame() {
+function restartGame(pScoreInt, cScoreInt, result, pScore, cScore) {
   const resetBtn = document.querySelector('#reset');
 
   resetBtn.style.display = 'inline-block';
-
+  
+  resetBtn.addEventListener('click', () => {
+    pScoreInt = 0;
+    cScoreInt = 0;
+    pScore.innerText = "Player Score: 0";
+    cScore.innerText = "Computer Score: 0";
+    result.innerText = "Result: N/A";
+    return game();
+  });
 }
 
-function checkWinner(playerScore, computerScore, result) {
+function checkWinner(playerScore, computerScore, result, pScore, cScore) {
   if (playerScore == 5 || computerScore == 5) {
     if (playerScore > computerScore) {
       result.innerText = `\nPlayer wins with a high score of ${playerScore}!`;
-      restartGame();
+      restartGame(playerScore, computerScore, result, pScore, cScore);
     } else if (computerScore > playerScore) {
       result.innerText = `\nComputer wins with a high score of ${computerScore}`;
-      restartGame();
+      restartGame(playerScore, computerScore, result, pScore, cScore);
     } else {
       result.innerText = "It's a TIE! No one wins!!!";
-      restartGame();
+      restartGame(playerScore, computerScore, result, pScore, cScore);
     }
   }
 }
@@ -101,6 +109,7 @@ function game() {
   const results = document.querySelector(".results");
   const pScore = document.querySelector(".pScore");
   const cScore = document.querySelector(".cScore");
+
 
   // btnRock.addEventListener("click", () => {
   //   results.innerText = `Result: ${playRound("Rock", getComputerChoice())}`;
@@ -127,23 +136,23 @@ function game() {
       if (e.target.id === "rock"){
         if (!(playerScore >= 5 || computerScore >= 5)) {
           results.innerText = `Result: ${playRound("Rock", getComputerChoice())}`;
-          pScore.innerText = `Players score: ${playerScore}`;
+          pScore.innerText = `Player Score: ${playerScore}`;
           cScore.innerText = `Computer Score: ${computerScore}`;
-          checkWinner(playerScore, computerScore, results);
+          checkWinner(playerScore, computerScore, results, pScore, cScore);
         }
       } else if (e.target.id === "paper") {
         if (!(playerScore >= 5 || computerScore >= 5)) {
           results.innerText = `Result: ${playRound("Paper", getComputerChoice())}`;
-          pScore.innerText = `Players score: ${playerScore}`;
+          pScore.innerText = `Player Score: ${playerScore}`;
           cScore.innerText = `Computer Score: ${computerScore}`;
-          checkWinner(playerScore, computerScore, results);
+          checkWinner(playerScore, computerScore, results, pScore, cScore);
         }
       } else if (e.target.id === "scissors") {
         if (!(playerScore >= 5 || computerScore >= 5)) {
           results.innerText = `Result: ${playRound("Scissors", getComputerChoice())}`;
-          pScore.innerText = `Players score: ${playerScore}`;
+          pScore.innerText = `Player Score: ${playerScore}`;
           cScore.innerText = `Computer Score: ${computerScore}`;
-          checkWinner(playerScore, computerScore, results);
+          checkWinner(playerScore, computerScore, results, pScore, cScore);
         }
       }
     });
