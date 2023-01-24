@@ -1,5 +1,6 @@
 const words = ["Rock", "Paper", "Scissors"];
-let playerScore = 0, computerScore = 0;
+let playerScore = 0,
+  computerScore = 0;
 console.log("Number meaning:\n0 - Rock\n1 - Paper\n2 - Scissors");
 
 function getComputerChoice() {
@@ -72,11 +73,25 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function game() {
-  for (let i = 0; i < 5; i++) {
-    console.log(playRound(getPlayerChoice(), getComputerChoice()));
-    console.log(`Players score: ${playerScore}`);
-    console.log(`Computer score: ${computerScore}`);
-  }
+  const btnRock = document.querySelector('#rock');
+  const btnPaper = document.querySelector('#paper');
+  const btnScissors = document.querySelector('#scissors');
+
+  btnRock.addEventListener('click', () => {
+    playRound('Rock', getComputerChoice());
+  });
+
+  btnPaper.addEventListener('click', () => {
+    playRound('Paper', getComputerChoice());
+  });
+
+  btnScissors.addEventListener('click', () => {
+    playRound('Scissors', getComputerChoice());
+  });
+
+  //console.log(playRound(getPlayerChoice(), getComputerChoice()));
+  console.log(`Players score: ${playerScore}`);
+  console.log(`Computer score: ${computerScore}`);
   if (playerScore > computerScore) {
     console.log(`Player Wins!!!\nWith a high score of ${playerScore}!`);
   } else if (computerScore > playerScore) {
