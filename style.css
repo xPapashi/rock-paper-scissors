@@ -13,6 +13,14 @@ html, body {
 
 #reset {
     display: none;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: rgb(59, 59, 59);
+    border-radius: 8%;
+    border: 3px solid rgb(207, 69, 69);
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
 .container-icons {
@@ -22,6 +30,7 @@ html, body {
     gap:32px;
     padding: 8px;
     margin-bottom: 20px;
+    transition: 0.3s;
 }
 
 .icon-box {
@@ -60,5 +69,13 @@ html, body {
 }
 
 .icon-box:active {
+    margin-top: 10px;
+}
+
+#reset:hover {
+    background-color: rgba(59, 59, 59, 0.336);
+}
+
+#reset:active {
     margin-top: 10px;
 }
