@@ -82,34 +82,34 @@ function restartGame(pScoreInt, cScoreInt, result, pScore, cScore) {
     pScore.innerText = "Player Score: 0";
     cScore.innerText = "Computer Score: 0";
     result.innerText = "Result: N/A";
-    return game();
   });
 }
 
-function checkWinner(playerScore, computerScore, result, pScore, cScore) {
-  if (playerScore == 5 || computerScore == 5) {
-    if (playerScore > computerScore) {
-      result.innerText = `\nPlayer wins with a high score of ${playerScore}!`;
-      restartGame(playerScore, computerScore, result, pScore, cScore);
-    } else if (computerScore > playerScore) {
-      result.innerText = `\nComputer wins with a high score of ${computerScore}`;
-      restartGame(playerScore, computerScore, result, pScore, cScore);
-    } else {
-      result.innerText = "It's a TIE! No one wins!!!";
-      restartGame(playerScore, computerScore, result, pScore, cScore);
-    }
+function testReset() {
+  pScore = playerScore;
+  cScore = computerScore;
+
+  pScore = 0;
+  cScore = 0;
+
+  return pScore, cScore;
+}
+
+function displayWinner(playerScore, computerScore, result) {
+  if (playerScore > computerScore) {
+    result.innerText = `\nPlayer wins with a high score of ${playerScore}!`;
+  } else if (computerScore > playerScore) {
+    result.innerText = `\nComputer wins with a high score of ${computerScore}`;
+  } else {
+    result.innerText = "It's a TIE! No one wins!!!";
   }
 }
 
 function game() {
-  const btnRock = document.querySelector("#rock");
-  const btnPaper = document.querySelector("#paper");
-  const btnScissors = document.querySelector("#scissors");
-  const buttons = document.querySelectorAll('button');
+  const icons = document.querySelectorAll('.icon-box');
   const results = document.querySelector(".results");
   const pScore = document.querySelector(".pScore");
   const cScore = document.querySelector(".cScore");
-
 
   // btnRock.addEventListener("click", () => {
   //   results.innerText = `Result: ${playRound("Rock", getComputerChoice())}`;
@@ -128,33 +128,45 @@ function game() {
   //   pScore.innerText = `Players score: ${playerScore}`;
   //   cScore.innerText = `Computer Score: ${computerScore}`;
   // });
+  icons.forEach(icon => {
+    icon.addEventListener('click', function (e) {
+      console.log(e);
 
-  buttons.forEach(button => {
-    button.addEventListener('click', function (e) {
-
-      console.log(e.target.id);
-      if (e.target.id === "rock"){
-        if (!(playerScore >= 5 || computerScore >= 5)) {
+      if (e.target.id === "rock" || e.target.id === "rock-hand"){
           results.innerText = `Result: ${playRound("Rock", getComputerChoice())}`;
           pScore.innerText = `Player Score: ${playerScore}`;
           cScore.innerText = `Computer Score: ${computerScore}`;
-          checkWinner(playerScore, computerScore, results, pScore, cScore);
-        }
-      } else if (e.target.id === "paper") {
-        if (!(playerScore >= 5 || computerScore >= 5)) {
+      } else if (e.target.id === "paper" || e.target.id === "paper-hand") {
           results.innerText = `Result: ${playRound("Paper", getComputerChoice())}`;
           pScore.innerText = `Player Score: ${playerScore}`;
           cScore.innerText = `Computer Score: ${computerScore}`;
-          checkWinner(playerScore, computerScore, results, pScore, cScore);
-        }
-      } else if (e.target.id === "scissors") {
-        if (!(playerScore >= 5 || computerScore >= 5)) {
+      } else if (e.target.id === "scissors" || e.target.id === "scissors-hand") {
           results.innerText = `Result: ${playRound("Scissors", getComputerChoice())}`;
           pScore.innerText = `Player Score: ${playerScore}`;
           cScore.innerText = `Computer Score: ${computerScore}`;
-          checkWinner(playerScore, computerScore, results, pScore, cScore);
-        }
       }
+      // if (e.target.id === "rock" || e.target.id === "rock-hand"){
+      //   if (!(playerScore >= 5 || computerScore >= 5)) {
+      //     results.innerText = `Result: ${playRound("Rock", getComputerChoice())}`;
+      //     pScore.innerText = `Player Score: ${playerScore}`;
+      //     cScore.innerText = `Computer Score: ${computerScore}`;
+      //     checkWinner(playerScore, computerScore, results, pScore, cScore);
+      //   }
+      // } else if (e.target.id === "paper" || e.target.id === "paper-hand") {
+      //   if (!(playerScore >= 5 || computerScore >= 5)) {
+      //     results.innerText = `Result: ${playRound("Paper", getComputerChoice())}`;
+      //     pScore.innerText = `Player Score: ${playerScore}`;
+      //     cScore.innerText = `Computer Score: ${computerScore}`;
+      //     checkWinner(playerScore, computerScore, results, pScore, cScore);
+      //   }
+      // } else if (e.target.id === "scissors" || e.target.id === "scissors-hand") {
+      //   if (!(playerScore >= 5 || computerScore >= 5)) {
+      //     results.innerText = `Result: ${playRound("Scissors", getComputerChoice())}`;
+      //     pScore.innerText = `Player Score: ${playerScore}`;
+      //     cScore.innerText = `Computer Score: ${computerScore}`;
+      //     checkWinner(playerScore, computerScore, results, pScore, cScore);
+      //   }
+      // }
     });
   })
 

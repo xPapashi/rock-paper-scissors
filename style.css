@@ -1,9 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
 html, body {
     background-color: #474747;
     color: #fff;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
 }
 
 #reset {
     display: none;
+}
+
+.container-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:32px;
+    padding: 8px;
+    margin-bottom: 20px;
+}
+
+.icon-box {
+    padding: 18px;
+    background-color: rgb(59, 59, 59);
+    border-radius: 16%;
+    border: 3px solid rgb(207, 69, 69);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.icon-box i {
+    color:#ffffff;
+    font-size: 42px;
+}
+
+.container-scores, .container-results {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    font-size: 18px;
+}
+
+.container-scores {
+    max-width: 150px;
+}
+
+.container-results {
+    max-width: 320px;
+}
+
+/* Hover Effects */
+
+.icon-box:hover {
+    background-color: rgba(59, 59, 59, 0.336);
+}
+
+.icon-box:active {
+    margin-top: 10px;
 }
